@@ -1,18 +1,12 @@
-# revision 29558
-# category Package
-# catalog-ctan /fonts/nanumtype1
-# catalog-date 2013-03-25 18:47:44 +0100
-# catalog-license ofl
-# catalog-version 3.0
 Name:		texlive-nanumtype1
-Version:	3.0
-Release:	10
+Version:	29558
+Release:	1
 Summary:	Type1 subfonts of Nanum Korean fonts
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/nanumtype1
 License:	OFL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/nanumtype1.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/nanumtype1.doc.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/nanumtype1.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/nanumtype1.doc.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -30,12 +24,12 @@ package does not include OpenType/TrueType files, which are
 available from Naver).
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -1772,7 +1766,7 @@ available from Naver).
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%autosetup -p1 -c -a1
 
 %build
 
