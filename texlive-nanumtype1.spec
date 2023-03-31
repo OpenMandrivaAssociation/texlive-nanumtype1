@@ -1,6 +1,6 @@
 Name:		texlive-nanumtype1
 Version:	29558
-Release:	1
+Release:	2
 Summary:	Type1 subfonts of Nanum Korean fonts
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/nanumtype1
