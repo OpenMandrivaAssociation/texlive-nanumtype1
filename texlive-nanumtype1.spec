@@ -1,9 +1,10 @@
 %global tl_name nanumtype1
 %global tl_revision 29558
+%global tl_version 3.0
 
 Name:		texlive-%{tl_name}
 Epoch:		1
-Version:	3.0
+Version:	%{tl_version}
 Release:	%{tl_revision}.1
 Summary:	Type1 subfonts of Nanum Korean fonts
 Group:		Publishing
@@ -13,7 +14,8 @@ Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/nanumtype1.r%{tl
 Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/nanumtype1.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
 BuildSystem:	texlive
-Provides:	texlive(%{tl_name}) = %{tl_revision}
+Requires:	texlive-tlpkg
+Provides:	texlive(%{tl_name}) = %{version}
 
 %description
 Nanum is a unicode font designed especially for Korean-language script.
@@ -25,3 +27,10 @@ OTFs. C70, LUC, T1, and TS1 font definition files are also provided.
 (The package does not include OpenType/TrueType files, which are
 available from Naver)
 
+
+%install -a
+mkdir -p %{buildroot}%{_texmf_updmap_d}
+cat > %{buildroot}%{_texmf_updmap_d}/%{tl_name} <<'TL_DROPIN_EOF'
+# from nanumtype1:
+Map nanumfonts.map
+TL_DROPIN_EOF
